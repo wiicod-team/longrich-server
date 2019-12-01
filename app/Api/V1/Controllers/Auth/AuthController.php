@@ -98,7 +98,7 @@ class AuthController extends Controller
         foreach ($user->roles as $role) {
             $userRole [] = $role->name;
         }*/
-
+        $user = User::with('customer')->find($user->id);
         return response()->success(compact('user', 'token'));
 //        return response()->success(compact('user', 'token','abilities', 'userRole'));
     }
@@ -152,9 +152,9 @@ class AuthController extends Controller
     public function updateMe(Request $request){
         $rule = [
         ];
-
+        $user = Auth::user();
         if( $request->email !=null ){
-            $rule['email'] = 'required|email|unique:users,email';
+            $rule['email'] = 'required|email|unique:users,email,'.$user->id;
         }
         $validator = Validator::make($request->all(), $rule);
 

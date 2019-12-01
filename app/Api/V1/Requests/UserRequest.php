@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
      */
     public function rules(){
         $rules = [
-            'name'=>'required|max:255',
+            'name'=>'max:255',
             'email'=>'required|email|max:255|unique:users,email',
             'status'=>Rule::in(User::$Status),
             'password'=>'required|min:6|max:255',

@@ -10,6 +10,7 @@ $api->version('v1', function (Router $api) {
         $api->group(['prefix' => 'auth'], function(Router $api) {
             $api->post('signup', 'Auth\AuthController@signup');
             $api->post('signin', 'Auth\AuthController@signin');
+            $api->post('update_info', 'Auth\AuthController@updateMe');
             $api->get('me', 'Auth\AuthController@getAuthenticatedUser');
             $api->post('recovery', 'Auth\PasswordResetController@sendResetToken');
             $api->post('verify', 'Auth\PasswordResetController@verify');
@@ -33,10 +34,10 @@ $api->version('v1', function (Router $api) {
 
             $api->resource("bill_products", 'BillProductController');
             $api->resource("bills", 'BillController');
-            $api->resource("categories", 'CategoriesController');
-            $api->resource("customers", 'CusteomerController');
+            $api->resource("categories", 'CategoryController');
+            $api->resource("customers", 'CustomerController');
             $api->resource("deliveries", 'DeliveryController');
-            $api->resource("patners", 'PatnerController');
+            $api->resource("partners", 'PatnerController');
             $api->resource("products", 'ProductController');
             $api->resource("towns", 'TownController');
             $api->resource("users", 'UserController');

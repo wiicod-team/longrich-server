@@ -25,7 +25,7 @@ class BillRequest extends FormRequest
     public function rules(){
         $rules = [
             'amount'=>'required|numeric',
-            'payment_code'=>'max:255',
+            'payment_code'=>'unique:bills,payment_code|max:255',
             'payment_method'=>'required|max:255',
             'status'=>Rule::in(Bill::$Status),
             'customer_id'=>'required|integer|exists:customers,id'

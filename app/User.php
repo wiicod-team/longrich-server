@@ -38,7 +38,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->name;
     }
 
-    public static $Status= ['new','active','disable'];
+    public static $Status= ['active','disable'];
 
     /**
      * Automatically creates hash for the user password.

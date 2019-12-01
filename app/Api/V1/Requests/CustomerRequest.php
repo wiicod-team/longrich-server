@@ -27,8 +27,7 @@ class CustomerRequest extends FormRequest
             'name'=>'required|max:255',
             'phone'=>'required|min:9|max:15',
             'gender'=>'required|max:1',
-            'payment_method'=>'required|max:255',
-            'status'=>Rule::in(Customer::$Status),
+            //'status'=>Rule::in(Customer::$Status),
             'user_id'=>'required|integer|exists:users,id|unique:customers,user_id'
         ];
         return RuleHelper::get_rules($this->method(),$rules);

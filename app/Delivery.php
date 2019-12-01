@@ -9,9 +9,9 @@ class Delivery extends Model
 {
     //
     use RestTrait;
-    protected $fillable = ['is_express','status','road','district','information','bill_id','town_id'];
+    protected $fillable = ['is_express','status','road','district','information','bill_id','town_id','delivery_date','delivery_max_date'];
 
-    protected $dates = ['delivery_date','delivery_max_date','created_at','updated_at'];
+    protected $dates = ['created_at','updated_at'];
 
     public static $Status= ['new','pending','delivered'];
 
