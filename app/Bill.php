@@ -12,7 +12,7 @@ class Bill extends Model
     protected $fillable = ['amount','payment_code','status','payment_method','customer_id'];
     protected $dates = ['created_at','updated_at'];
 
-    public static $Status= ['new','pending','paid','delivered'];
+    public static $Status= ['pending_delivery','pending_payment','delivered'];
 
     public function getLabel()
     {
