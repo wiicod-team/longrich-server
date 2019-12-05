@@ -1,17 +1,27 @@
 [
 	{
-		"name":"Longrich Series"
+
+		"name":"Longrich Series",
+		"description": ""
 	},
 	{
-		"name":"SuperbKlean Series"
+
+		"name":"SuperbKlean Series",
+		"description": "SuperbKlean Series"
 	},
 	{
-		"name":"Classy Style Series"
+
+		"name":"Classy Style Series",
+		"description": "Classy Style Series"
 	},
 	{
-		"name":"Nutrivrich Series"
+
+		"name":"Nutrivrich Series",
+		"description": "Nutrivrich Series"
 	},
 	{
-		"name":"Evergreen Series"
+
+		"name":"Evergreen Series",
+		"description": "Evergreen Series"
 	}
 ]

@@ -12,6 +12,12 @@ class TownsTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(\App\Town::class,10)->create();
+//        factory(\App\Town::class,10)->create();
+        $path =base_path("database/seeds/json/towns.json");
+        $items = json_decode(file_get_contents($path),true);
+        foreach ($items as $item){
+            \App\Town::create($item);
+
+        }
     }
 }
