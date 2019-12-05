@@ -11,15 +11,20 @@ $api->version('v1', function (Router $api) {
             $api->post('signup', 'Auth\AuthController@signup');
             $api->post('signin', 'Auth\AuthController@signin');
             $api->post('update_info', 'Auth\AuthController@updateMe');
-            $api->get('me', 'Auth\AuthController@getAuthenticatedUser');
             $api->post('recovery', 'Auth\PasswordResetController@sendResetToken');
             $api->post('verify', 'Auth\PasswordResetController@verify');
             $api->post('reset', 'Auth\PasswordResetController@reset');
             $api->post('activateEmail', 'Auth\AccountVerificationController@activateEmail');
             $api->post('activatePhone', 'Auth\AccountVerificationController@activatePhone');
-            $api->post('logout', 'LogoutController@logout');
-            $api->post('refresh', 'RefreshController@refresh');
+
+            $api->group(['middleware' => 'jwt.auth'], function(Router $api) {
+                $api->get('me', 'Auth\AuthController@getAuthenticatedUser');
+                $api->post('update_info', 'Auth\AuthController@updateMe');
+                $api->post('logout', 'LogoutController@logout');
+                $api->post('refresh', 'RefreshController@refresh');
+            });
         });
+
 
         $api->group(['middleware' => 'api'], function(Router $api) {
             $api->get('protected', function() {
@@ -27,7 +32,7 @@ $api->version('v1', function (Router $api) {
                     'message' => 'Access to protected resources granted! You are seeing this text as you provided the token correctly.'
                 ]);
             });
-            $api->group(['prefix' => 'users'], function(Router $api) {
+            $api->group(['middleware' => 'jwt.auth','prefix' => 'users'], function(Router $api) {
                 $api->get('me', 'UserController@me');
                 $api->post('updateMe', 'Auth\AuthController@updateMe');
             });
