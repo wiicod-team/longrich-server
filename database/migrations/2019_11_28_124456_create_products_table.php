@@ -18,11 +18,11 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('status');
             $table->text('description');
-            $table->double('weight');
-            $table->string('dosage');
+            $table->double('weight')->nullable();
+            $table->text('dosage');
             $table->integer('price');
             $table->integer('price_promo')->nullable();
-            $table->string('composition');
+            $table->text('composition');
 
             $table->string('picture1');
             $table->string('picture2')->nullable();

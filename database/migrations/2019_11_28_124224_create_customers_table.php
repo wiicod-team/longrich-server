@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',45);
             $table->string('phone');
-            $table->string('status');
+            $table->string('status')->default('new');
             $table->string('gender',1);
 
             $table->bigInteger('user_id')->unsigned()->index()->unique();
