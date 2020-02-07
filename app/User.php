@@ -21,7 +21,11 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name','status', 'email', 'password',
+        'name','status', 'email', 'password','device_tokens',
+    ];
+
+    protected $casts = [
+        'device_tokens' => 'array', // Will convarted to (Array)
     ];
 
     /**
@@ -73,5 +77,10 @@ class User extends Authenticatable implements JWTSubject
 
     public function customer(){
         return $this->hasOne(Customer::class);
+    }
+
+    public function routeNotificationForOneSignal()
+    {
+        return $this->device_tokens;
     }
 }

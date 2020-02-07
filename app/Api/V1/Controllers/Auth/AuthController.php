@@ -151,6 +151,7 @@ class AuthController extends Controller
 
     public function updateMe(Request $request){
         $rule = [
+            'device_tokens' => 'array',
         ];
         $user = Auth::user();
         if( $request->email !=null ){

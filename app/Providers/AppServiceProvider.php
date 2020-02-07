@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Delivery;
+use App\Notifications\DeliveryReminder;
+use App\User;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Delivery::created(function (Delivery $d){
+            $users = User::whereStatus('admin')->get();
+            Notification::send($users, new DeliveryReminder($d));
+        });
     }
 
     /**
